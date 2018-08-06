@@ -11,12 +11,14 @@ import {DialogService} from './dialog.service';
 import {AuthService} from './auth.service';
 import {LoginComponent} from './login.component';
 import {LoginRoutingModule} from './login-routing.module';
+import { ComposeMessageComponent } from './compose-message.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NotFoundComponent,
-        LoginComponent
+        LoginComponent,
+        ComposeMessageComponent
     ],
     imports: [
         BrowserModule,

@@ -7,6 +7,7 @@ import {NotFoundComponent} from './not-found.component';
 import {CrisisCenterModule} from './crisis-center/crisis-center.module';
 import {AdminModule} from './admin/admin.module';
 import {AuthGuard} from './auth-guard.service';
+import {ComposeMessageComponent} from './compose-message.component';
 
 const appRoutes: Routes = [
     {
@@ -18,6 +19,11 @@ const appRoutes: Routes = [
         path: 'admin',
         loadChildren: () => AdminModule,
         canLoad: [AuthGuard]
+    },
+    {
+        path: 'compose',
+        component: ComposeMessageComponent,
+        outlet: 'popup'
     },
     {path: '', redirectTo: '/heroes', pathMatch: 'full'},
     {path: '**', component: NotFoundComponent}

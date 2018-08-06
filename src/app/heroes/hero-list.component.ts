@@ -12,7 +12,7 @@ import {switchMap} from 'rxjs/operators';
 export class HeroListComponent implements OnInit {
 
     heroes$: Observable<Hero[]>;
-    // 当进入详情列表之海，在返回的是哈。想显示刚才选中的项
+    // 当进入详情列表之后然后再返回的时候。想显示刚才选中的项
     selectedId: number;
 
     constructor(private service: HeroService,
