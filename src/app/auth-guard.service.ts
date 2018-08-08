@@ -1,9 +1,18 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, NavigationExtras, Route, Router, RouterStateSnapshot} from '@angular/router';
+import {
+    ActivatedRouteSnapshot,
+    CanActivate,
+    CanActivateChild,
+    CanLoad,
+    NavigationExtras,
+    Route,
+    Router,
+    RouterStateSnapshot
+} from '@angular/router';
 import {AuthService} from './auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild  {
+export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
     constructor(private authService: AuthService, private router: Router) {
 
@@ -17,14 +26,16 @@ export class AuthGuard implements CanActivate, CanActivateChild  {
     }
 
     checkLogin(url: string): boolean {
-        if (this.authService.isLoggedIn) { return true; }
+        if (this.authService.isLoggedIn) {
+            return true;
+        }
 
         // Store the attempted URL for redirecting
         this.authService.redirectUrl = url;
 
         const sessionId = 123456789;
         const navigationExtras: NavigationExtras = {
-            queryParams: { 'session_id': sessionId },
+            queryParams: {'session_id': sessionId},
             fragment: 'anchor'
         };
 
@@ -38,6 +49,9 @@ export class AuthGuard implements CanActivate, CanActivateChild  {
         return this.canActivate(route, state);
     }
 
+    /**
+     * 控制是否允许延迟加载整个模块
+     */
     canLoad(route: Route): boolean {
         const url = `/${route.path}`;
 

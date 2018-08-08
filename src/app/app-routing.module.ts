@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {CanDeactivateGuard} from './can-deactivate-guard.service';
 import {SelectivePreloadingStrategy} from './selective-preloading-strategy';
 import {NotFoundComponent} from './not-found.component';
@@ -35,7 +35,7 @@ const appRoutes: Routes = [
             appRoutes,
             {
                 enableTracing: false, // <-- debug调试使用
-                preloadingStrategy: SelectivePreloadingStrategy,
+                preloadingStrategy: SelectivePreloadingStrategy, // 自定义预加载策略
 
             }
         ),

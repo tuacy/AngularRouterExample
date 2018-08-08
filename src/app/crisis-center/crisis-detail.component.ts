@@ -2,7 +2,6 @@ import {Component, HostBinding, OnInit} from '@angular/core';
 import {slideInDownAnimation} from '../animations';
 import {Crisis} from './crisis.service';
 import {ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RoutesRecognized} from '@angular/router';
-import {Observable} from 'rxjs';
 import {DialogService} from '../dialog.service';
 import {filter} from 'rxjs/operators';
 
